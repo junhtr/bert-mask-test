@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import random
 from typing import List, Tuple
 
 import torch
@@ -13,8 +12,7 @@ def print_result(words: List[str], predictions: torch.Tensor) -> None:
         _, indexes = torch.topk(predictions[0, pos], k=5)
         tokens = _tokenizer.convert_ids_to_tokens(indexes.tolist())
         word = words[pos]
-        masked = word == "[MASK]"
-        print(f"#{pos}: {word} {'(MASKED)' if masked else ''}")
+        print(f"#{pos}: {word}")
         for rank, index in enumerate(indexes):
             print(
                 "- {} (#{}: {:.3f})".format(
@@ -29,8 +27,9 @@ def process_sentence(text: str) -> Tuple[List[str], torch.Tensor]:
     words.insert(0, "[CLS]")
     words.append("[SEP]")
 
-    mask_index = random.randrange(len(words))
-    words[mask_index] = "[MASK]"
+    for i in range(len(words)):
+        if words[i] == "*":
+            words[i] = "[MASK]"
 
     print(" ".join(words))
 
