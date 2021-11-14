@@ -1,0 +1,20 @@
+click==7.1.2
+matplotlib
+numpy
+opencv-contrib-python
+seaborn
+scikit-image
+sklearn
+spacy
+tensorflow
+torch==1.9.0
+torchtext==0.10.0
+torchvision==0.10.0
+transformers==4.12.3
+
+# Linting
+pysen
+black==21.10b0
+flake8==4.0.1
+isort==5.10.1
+mypy==0.910

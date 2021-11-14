@@ -1,0 +1,20 @@
+[tool.pysen]
+version = "0.10"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = true
+line_length = 88
+mypy_preset = "strict"
+py_version = "py37"
+
+[[tool.pysen.lint.mypy_targets]]
+paths = ["."]
+
+[tool.pysen.lint.mypy_modules."torch"]
+follow_imports = "skip"
+
+[tool.pysen.lint.mypy_modules."transformers"]
+follow_imports = "skip"
